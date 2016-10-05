@@ -1,0 +1,395 @@
+
+:focus {
+	outline: none;
+}
+
+body {
+	background: #d6d6d6;
+}
+
+#container {
+	width: 100%;
+	max-width: 900px;
+	background: #fff;
+	margin: 0 auto;
+}
+
+#transcript {
+	padding: 1% 5% 3%;
+}
+
+video {
+	width: 100%;
+	height: auto;
+}
+
+#control-bar {
+	position: relative;
+	top: -70px;
+	width: 100%;
+	height: 65px;
+	z-index: 2147483647; /*	Ensures video controls remain visible in full screen mode */
+}
+
+#playback-controls {
+	opacity: 0;
+	transition: opacity ease-in-out 0.5s;
+}
+
+
+#progressBar {
+	position: relative;
+	width: 98%;
+	height: 4px;
+	margin-left: 1%;
+	margin-right: 1%;
+	background: rgba(0,0,0,0.3);
+	border-radius: 5px;
+	top: 55px;
+	transition: top ease-in-out 0.5s;
+}
+
+#seekslider {
+	background: #fd860a;
+	height: 4px;
+	width: 0;
+}
+
+.progressBar input[type=range] {
+    /*removes default webkit styles*/
+    -webkit-appearance: none;
+    
+    /*required for proper track sizing in FF*/
+    width: 98%;
+}
+
+.progressBar input[type=range]::-webkit-slider-runnable-track {
+    width: 98%;
+    height: 4px;
+   	background: #fd860a;
+    border: none;
+    border-radius: 5px;
+}
+
+.progressBar input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+   	background: transparent;
+}
+
+.progressBar input[type=range]:focus {
+    outline: none;
+}
+
+.progressBar input[type=range]:focus::-webkit-slider-runnable-track {
+    background: rgba(0,0,0,0.3);
+}
+
+.progressBar input[type=range]::-moz-range-track {
+    width: 98%;
+    height: 4px;
+   	background: rgba(0,0,0,0.3);
+    border: none;
+    border-radius: 5px;
+}
+
+.progressBar input[type=range]::-moz-range-thumb {
+  background: transparent;
+	border: none;
+}
+
+/*hide the outline behind the border*/
+.progressBar input[type=range]:-moz-focusring{
+    outline: 1px solid white;
+    outline-offset: -1px;
+}
+
+.progressBar input[type=range]::-ms-track {
+    width: 98%;
+    height: 4px;
+    background: rgba(0,0,0,0.3);
+    
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 6px 0;
+
+    /*remove default tick marks*/
+    color: transparent;
+}
+
+.progressBar input[type=range]::-ms-fill-lower {
+    background: #fd860a;
+    border-radius: 5px;
+}
+
+.progressBar input[type=range]::-ms-fill-upper {
+    background: rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+.progressBar input[type=range]::-ms-thumb {
+    border: none;
+ 		background: transparent;
+}
+
+.progressBar input[type=range]:focus::-ms-fill-lower {
+    background: #fd860a;
+}
+
+.progressBar input[type=range]:focus::-ms-fill-upper {
+    background: rgba(0,0,0,0.3);
+}
+
+.progressBar input[type=range]:in-range {
+    background-color: rgba(#fd860a);
+}
+
+/*
+.timeBar {
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #fd860a;
+		border-radius: 5px;
+		z-index: 100;
+}
+*/
+
+/* REMEMBER TO ADD THIS BACK IN AT SOME POINT!!!!!!!!!!!!!!!!!!!!!!!!!
+.buffered {
+  height: 20px;
+  position: relative;
+  background: #555;
+  width: 300px;
+}
+
+#buffered-amount {
+  display: block;
+  height: 100%;
+  background-color: red;
+	width: 0;
+}
+*/
+
+/*
+.bufferBar {
+    position: absolute;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #474647;
+}
+*/
+
+/*
+#buffTime {
+	height: 40px;
+	background: green;
+}
+*/
+
+
+/*
+#progress-bar {
+	width: 98%;
+	margin-left: 1%;
+	margin-right: 1%;
+	position: absolute;
+	top: 55px;
+}
+
+progress {
+	color: #FD860A;
+	width: 172px;
+	height: 4px;
+	border: none;
+	background: rgba(0,0,0,0.3);
+	border-radius: 5px;
+}
+
+progress::-moz-progress-bar {
+	background: #FD860A;
+	border-radius: 5px;
+}
+
+
+.progress {
+  margin-top: -20px;
+  height: 20px;  
+  position: relative;
+  width: 300px;
+}
+
+#progress-amount {
+  display: block;
+  height: 100%;
+  background-color: #595;
+  width: 0;
+}
+
+#buffer-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: red;
+}
+
+.buffered {
+  height: 20px;
+  position: relative;
+  background: #555;
+  width: 300px;
+}
+
+#buffered-amount {
+  display: block;
+  height: 100%;
+  background-color: red;
+  width: 0;
+}
+*/
+
+#play,
+#pause, 
+#mute,
+#full-screen,
+#timings,
+#captions {
+	position: absolute;
+	top: 20px;
+	background: transparent;
+	border: none;
+}
+
+#play, 
+#pause {
+	left: 20px;
+}
+
+#mute,
+#unmute {
+	right: 60px;
+}
+
+input#volumeslider { 
+	width: 80px;
+	position: absolute;
+	right: 100px;
+	top: 20px;
+}
+
+#full-screen,
+#normal-screen {
+	right: 20px;
+}
+
+#captions {
+	right: 195px;
+	color: #fff;
+}
+
+#captions.off {
+	color: #9e9e9e;
+}
+
+
+.progressTime {
+	position: absolute;
+	left: 70px;
+	color: #fff;
+	text-shadow: 1px 1px 2px black;
+	width: 20%;
+	top: 27px;
+	display: none;
+}
+
+.current,
+.timeDivider,
+.duration {
+	float: left;
+	margin-right: 2%;
+}
+
+#seek-bar {
+	width: 100%;
+	position: absolute;
+	bottom: 5px;
+}
+
+#video-container:hover #control-bar {
+	background: rgba(0,0,0,0.1);
+}
+
+#video-container:hover #playback-controls{
+	opacity: .9;
+}
+
+#video-container:hover #seek-bar {
+	bottom: 50px;
+}
+
+#video-container:hover #progressBar {
+	top: 0;
+}
+
+#video-container:hover .progressTime {
+	display: inline-block;
+}
+
+
+/* --------------------------
+  Keyframes
+--------------------------- */
+
+@-webkit-keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* --------------------------
+  Animation
+--------------------------- */
+
+span.highlight {
+/*	background: #fd860a;*/
+	background: linear-gradient(to left, white 40%, #fd860a 50%);
+	background-size: 400% 400%;
+	-webkit-animation: Highlighter 5s ease-in -1s;
+	-moz-animation: Highlighter 5s ease-in -1s;
+	-o-animation: Highlighter 5s ease-in -1s;	
+	animation: Highlighter 5s ease-in -1s;
+}
+
+#transcript span {
+	cursor: pointer;
+}
+
+
+/* Remove browser video controls in full screen mode */
+
+::-webkit-media-controls {
+  display:none !important;
+}
+
+
+    
+
+
+

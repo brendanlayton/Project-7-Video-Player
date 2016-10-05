@@ -1,0 +1,305 @@
+/* --------------------------
+  General Styles
+--------------------------- */
+
+::focus,
+::active,
+::visited {
+	outline: none;
+}
+
+.clearfix::after {
+	content: " ";
+	display: table;
+	clear: both;
+}
+
+body {
+	background: #d6d6d6;
+}
+
+#container {
+	width: 100%;
+	max-width: 900px;
+	background: #fff;
+	margin: 0 auto;
+}
+
+#video-container {
+	max-height: 560px;
+}
+
+
+/* --------------------------
+  Video & Controls
+--------------------------- */
+
+video {
+	width: 100%;
+}
+
+#control-bar {
+	position: relative;
+	top: -70px;
+	width: 100%;
+	height: 65px;
+}
+
+#progressBar,
+.buffered {
+	position: relative;
+	width: 98%;
+	height: 4px;
+	margin-left: 1%;
+	margin-right: 1%;
+	border-radius: 5px;
+	top: 55px;
+	transition: top ease-in-out 0.5s;	
+}
+
+#progressBar {
+	background: rgba(0,0,0,0.3);
+}
+
+#buffered-amount {
+  display: block;
+  height: 100%;
+  background-color: rgba(90, 87, 85, 0.3;);
+	width: 0;
+	margin-top: -4px;
+}
+
+#seekslider {
+	background: #fd860a;
+	height: 4px;
+	width: 0;
+	position: absolute;
+	z-index: 100;
+}
+
+#playback-controls,
+#vol-scr-controls {
+	opacity: 0;
+	transition: opacity ease-in-out 0.5s;
+	width: 48%;
+	padding-top: 15px;
+}
+
+#playback-controls {
+	float: left;
+	padding-left: 2%;
+}
+
+#vol-scr-controls {
+	float: right;
+	padding-right: 2%;
+}
+
+/* Left side */
+
+#play,
+#pause, 
+#current,
+#divider,
+#duration {
+	float: left;
+	background: transparent;
+	border: none;
+	color: #fff;
+}
+
+#play,
+#duration {
+	margin-right: 20px;
+}
+
+#current,
+#duration,
+#divider {
+	padding: 5px 5px 0 0;
+}
+
+#speedControls select {
+	background: transparent !important;
+	border: none;
+	box-shadow: none;
+	width: 115%;
+	color: #424242;
+	padding: 3px 5px;
+	float: left;
+}
+
+#speedControls select option {
+	color: #424242;
+}
+
+.styled-select {
+	background: url('../icons/chev-down.png') no-repeat 100px;
+	background-color: #e9e9e9;
+	background-size: 15px;
+	height: 24px;
+	margin: 0;
+	border: 1px solid #a8a8a8;
+	border-radius: 3px;
+	font-size: 0.9em;
+	width: 30%;
+	overflow: hidden;
+}
+
+
+/* Right side */
+
+#captions.on,
+#captions.off,
+input#volumeslider,
+#mute,
+#enterFullscreen,
+#exitFullscreen {
+	float: right;
+	margin-left: 2%;
+	background: transparent;
+	border: none;
+	color: #fff;
+}
+
+input#volumeslider {
+	width: 30%;
+	padding-top: 3px;
+}
+
+#captions.off {
+	color: #9e9e9e;
+}
+
+
+
+/* --------------------------
+  Pseudo Elements
+--------------------------- */
+
+#video-container:hover #control-bar {
+	background: rgba(0,0,0,0.1);
+}
+
+#video-container:hover #playback-controls,
+#video-container:hover #vol-scr-controls {
+	opacity: .9;
+}
+
+#video-container:hover #progressBar,
+#video-container:hover .buffered {
+	top: 0;
+}
+
+
+
+/* --------------------------
+  Transcript
+--------------------------- */
+
+#transcript {
+	padding: 0 5% 3%;
+}
+
+
+/* ---- Keyframes ---- */
+
+@-webkit-keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes Highlighter {
+    0%{background-position:100% 50%}
+    50%{background-position:50% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* ---- Animation ---- */
+
+span.highlight {
+/*	background: #fd860a;*/
+	background: linear-gradient(to left, white 40%, #fd860a 50%);
+	background-size: 400% 400%;
+	-webkit-animation: Highlighter 5s ease-in -1s;
+	-moz-animation: Highlighter 5s ease-in -1s;
+	-o-animation: Highlighter 5s ease-in -1s;	
+	animation: Highlighter 5s ease-in -1s;
+}
+
+#transcript span {
+	cursor: pointer;
+}
+
+
+/* ================================================ 
+  Media Queries
+================================================= */
+
+@media screen and (max-width: 767px) {
+	
+	#speedControls {
+    display: none;
+	}
+
+}
+
+@media screen and (max-width: 1024px) {
+	
+	#progressBar,
+	.buffered {
+		top: 0;	
+	}
+	
+	#control-bar {
+		top: -6px;
+		height: 52px;
+		background: rgba(0,0,0,0.8);
+	}	
+	
+	#playback-controls,
+	#vol-scr-controls {
+		opacity: 1;
+	}
+	
+	#play {
+    margin-right: 10px;
+	}
+	
+	#play img {
+    width: 15px;
+	}
+	
+	.progressTime {
+		font-size: 14px;
+	}
+	
+	.styled-select {
+		background-position: 60px;
+		width: 21%;
+	}	
+	
+	#transcript {
+		padding-top: 5%;
+	}
+	
+	#transcript p {
+		font-size: 15px;
+	}
+	
+
+}
+    
+
+
+
