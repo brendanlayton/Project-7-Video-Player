@@ -2,9 +2,9 @@
   General Styles
 --------------------------- */
 
-::focus,
-::active,
-::visited {
+:focus,
+:active,
+:visited {
 	outline: none;
 }
 
