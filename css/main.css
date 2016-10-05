@@ -45,6 +45,12 @@ video {
 	height: 65px;
 }
 
+#progress-control {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	cursor: pointer;
+}
+
 #progressBar,
 .buffered {
 	position: relative;
@@ -53,7 +59,7 @@ video {
 	margin-left: 1%;
 	margin-right: 1%;
 	border-radius: 5px;
-	top: 55px;
+	top: 50px;
 	transition: top ease-in-out 0.5s;	
 }
 
@@ -64,7 +70,7 @@ video {
 #buffered-amount {
   display: block;
   height: 100%;
-  background-color: rgba(90, 87, 85, 0.3;);
+  background-color: rgba(90, 87, 85, 0.3);
 	width: 0;
 	margin-top: -4px;
 }
@@ -82,7 +88,7 @@ video {
 	opacity: 0;
 	transition: opacity ease-in-out 0.5s;
 	width: 48%;
-	padding-top: 15px;
+	padding-top: 10px;
 }
 
 #playback-controls {
@@ -188,7 +194,7 @@ input#volumeslider {
 
 #video-container:hover #progressBar,
 #video-container:hover .buffered {
-	top: 0;
+	top: 0px;
 }
 
 
@@ -263,7 +269,6 @@ span.highlight {
 	
 	#control-bar {
 		top: -6px;
-		height: 52px;
 		background: rgba(0,0,0,0.8);
 	}	
 	
@@ -297,9 +302,4 @@ span.highlight {
 		font-size: 15px;
 	}
 	
-
 }
-    
-
-
-

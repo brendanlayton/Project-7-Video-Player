@@ -5,7 +5,8 @@ var vidContainer;
 var playPauseBtn;
 var playBtn = '<img src="icons/play-icon.png" alt="Play button" />';
 var pauseBtn = '<img src="icons/pause-icon.png" alt="Pause button" />';
-var seekbar;
+var progressControl;
+var progressBar;
 var seekslider;
 var buffTime = document.getElementById('buffered-amount');
 var currentText;
@@ -30,6 +31,7 @@ function intializePlayer() {
 	video = document.getElementById("video-1");
 	vidContainer = document.getElementById("video-container");
 	playPauseBtn = document.getElementById("play");
+	progressControl = document.getElementById("progress-control");
 	progressBar = document.getElementById("progressBar");
 	seekslider = document.getElementById("seekslider");
 	currentText = document.getElementById("current");
@@ -47,15 +49,15 @@ function intializePlayer() {
 	// Add event listeners
 	playPauseBtn.addEventListener("click", videoPlay, false);
 	video.addEventListener("ended", videoEnd, false);
-	progressBar.addEventListener("mousedown", seekMD, false);
-	progressBar.addEventListener("mouseup", seekMU, false);
-	progressBar.addEventListener("mousemove", seekMM, false);
+	progressControl.addEventListener("mousedown", seekMD, false);
+	progressControl.addEventListener("mouseup", seekMU, false);
+	progressControl.addEventListener("mousemove", seekMM, false);
 	video.addEventListener("progress", videoBuffer, false);
 	video.addEventListener("timeupdate", seektimeupdate, false);
 	muteBtn.addEventListener("click", videoMute, false);
 	volumeslider.addEventListener("change", setvolume, false);
 	enterFullscreen.addEventListener("click", toFullScr, false);
-	exitFullscreen.addEventListener("click", exitFullScr, false)
+	exitFullscreen.addEventListener("click", exitFullScr, false);
 	ccBtn.addEventListener("click", ccToggle, false);
 	video.addEventListener("timeupdate", highlighter, false);
 	speedSelect.addEventListener("change", changeSpeed, false);
@@ -86,11 +88,6 @@ function videoEnd() {
 
 // Seek bar
 
-function vidSeek() {
-	var seekto = video.duration * (seekslider.value / 100);
-	video.currentTime = seekto;
-}
-
 function seektimeupdate() {
 	var newTime = video.currentTime * (100 / video.duration);
 	seekslider.style.width = newTime + "%";
@@ -111,12 +108,14 @@ var timeDrag = false;   /* Drag status */
 
 function seekMD(event) {
 	timeDrag = true;
+	video.pause();
 	updatebar(event.pageX);
 }
 
 function seekMU(event) {
 	if (timeDrag) {
 		timeDrag = false;
+		video.play();
 		updatebar(event.pageX);
 	}
 }
@@ -168,7 +167,7 @@ setTimeout(videoBuffer, 500);
 // Mute/unmute button
 
 function videoMute() {
-	if (video.muted == false) {
+	if (video.muted === false) {
     // Mute the video
     video.muted = true;
 
@@ -224,15 +223,15 @@ function ccToggle() {
 // Enter full-screen
 
 function toFullScr() {
-	if (document.fullscreenElement == null && vidContainer.requestFullscreen ) {
+	if (document.fullscreenElement === null && vidContainer.requestFullscreen ) {
 			vidContainer.requestFullscreen();
 			enterFullscreen.innerHTML = "";
 			exitFullscreen.innerHTML = exFullScrBtnHTML;
-	} else if (document.mozFullScreenElement == null && vidContainer.mozRequestFullScreen ) {
+	} else if (document.mozFullScreenElement === null && vidContainer.mozRequestFullScreen ) {
 			vidContainer.mozRequestFullScreen(); // Firefox
 			enterFullscreen.innerHTML = "";
 			exitFullscreen.innerHTML = exFullScrBtnHTML;
-	} else if (document.webkitFullscreenElement == null && vidContainer.webkitRequestFullscreen ) {
+	} else if (document.webkitFullscreenElement === null && vidContainer.webkitRequestFullscreen ) {
 			vidContainer.webkitRequestFullscreen(); // Chrome and Safari
 			enterFullscreen.innerHTML = "";
 			exitFullscreen.innerHTML = exFullScrBtnHTML;
@@ -283,7 +282,7 @@ function highlighter() {
 			transcriptSpan[i].classList.remove("highlight"); 
 		}
 	}
-};
+}
 
 
 // Make transcript clickable
